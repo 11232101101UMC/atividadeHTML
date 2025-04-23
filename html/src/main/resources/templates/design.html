@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-br">
+<html xmlns: th ="https://www.thymeleaf.org">
+</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Site</title>
+</head>
+<body>
+    <p th:text="${mensagemDaController}"></p>
+
+    <form>
+    Nome= <input type="text" name="nome">
+    Email= <input type="text" name="email">
+    Usuário= <input type="text" name="usuario">
+        <br>
+        <br>
+    <button>Cadastrar Candidato</button>
+        <br>
+
+
+    </form>
+
+</body>
+</html>
