@@ -1,0 +1,15 @@
+body {
+    border: cadetblue;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    color:white;
+    background-color:oklch(37.4% 0.01 67.558);
+    --copy-button-background-color-active: white;
+
+}
+p {
+    text-align: center;
+    font-family: Verdana, Geneva, sans-serif;
+}

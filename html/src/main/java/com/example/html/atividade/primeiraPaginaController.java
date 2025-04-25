@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -17,6 +18,17 @@ public class primeiraPaginaController {
     model.addAttribute("mensagemDaController", "Criar Primeira Página");
     return "design";
 }
+@PostMapping("create")
+public String create(Model model,Pessoa pessoa) {
+    System.out.println("Pessoa nome:"+pessoa.Nome);
+    System.out.println("Pessoa email:"+pessoa.Email);
+    System.out.println("Pessoa usuario:"+pessoa.Usuário);
+
+    model.addAttribute("pessoa", pessoa);
+
+    return "candidate/info";
+}
+record Pessoa(String Nome,String Email,String Usuário) {}
 
 
 

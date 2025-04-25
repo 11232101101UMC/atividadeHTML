@@ -1,26 +1,30 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/html">
 <html xmlns: th ="https://www.thymeleaf.org">
 </html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link th:href="@{/estilo.css}" rel="stylesheet">
+
 </head>
 <body>
-    <p th:text="${mensagemDaController}"></p>
+<p th:text="${mensagemDaController}"></p>
 
-    <form>
-    Nome= <input type="text" name="nome">
-    Email= <input type="text" name="email">
-    Usuário= <input type="text" name="usuario">
+<form method="post" th:action="@{/create}" th:object="${pessoa}">
+    Nome=   <input type="text" name="Nome">
+    Email=  <input type="text" name="Email">
+    Usuário= <input type="text" name="Usuário">
+        <br>
         <br>
         <br>
     <button>Cadastrar Candidato</button>
         <br>
 
 
-    </form>
+</form>
 
 </body>
 </html>
