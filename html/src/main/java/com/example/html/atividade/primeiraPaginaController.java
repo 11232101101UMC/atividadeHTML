@@ -1,38 +1,52 @@
 package com.example.html.atividade;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 
-@Controller
-@RequestMapping("/")
+@RestController
+@RequestMapping("/cachorro")
 public class primeiraPaginaController {
     //localhost:8080/home
+    @Autowired
+    private primeiraRepositorio repositorio;
 
-@GetMapping("criar")
+@GetMapping("/criar")
     public String criar( Model model) { //model é atributo do springboot
     model.addAttribute("mensagemDaController", "Criar Primeira Página");
     return "design";
 }
-@PostMapping("create")
-public String create(Model model,Pessoa pessoa) {
-    System.out.println("Pessoa nome:"+pessoa.Nome);
-    System.out.println("Pessoa email:"+pessoa.Email);
-    System.out.println("Pessoa usuario:"+pessoa.Usuário);
 
-    model.addAttribute("pessoa", pessoa);
 
-    return "candidate/info";
+
+
+
+@PostMapping("/cadastro")
+public void atribuir(primeiraPaginaModel model) {
+
+        System.out.println("Ta aqui");
+        var nModel=this.repositorio.save(model);
+
+        System.out.println("salvou os dados no banco de dados");
+        System.out.println(nModel);
+
+
+
 }
-record Pessoa(String Nome,String Email,String Usuário) {}
 
-
-
-
+    @GetMapping("/cadastro")
+    public ModelAndView tela() {
+        ModelAndView mv = new ModelAndView("novo/design");
+        mv.addObject("primeiraPaginaModel", new primeiraPaginaModel());
+        return mv;
+    }
 
 
 }
+

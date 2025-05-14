@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-br" >
+<html xmlns: th ="https://www.thymeleaf.org">
+</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link th:href="@{/estilo.css}" rel="stylesheet">
+
+</head>
+<body>
+
+
+<div>
+    <h2>Bem Vindo</h2>
+    <br>
+    <p id="teste">Testes maneiros</p>
+    <p th:text="${mensagemcontroler}"></p>
+
+    <form th:action="@{/cachorro/cadastro}" th:object="${model}" method="post">
+        <input type="hidden"  id="id" th:field="${model.ID}" >
+        <label for="nome">Nome:</label>
+        <input type="text"   id="nome" th:field="${model.nome}">
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="text"   id="email" placeholder="example@hotmail.com" th:field="${model.email}" >
+        <br><br>
+
+        <label for="usuario">Usuário:</label>
+        <input type="text"  id="usuario" th:field="${model.usuario}">
+        <br><br>
+
+        <button type="submit" name="button">Enviar</button>
+
+    </form>
+</div>
+
+</body>
+</html>
